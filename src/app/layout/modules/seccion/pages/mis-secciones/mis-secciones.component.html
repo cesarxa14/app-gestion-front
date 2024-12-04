@@ -1,0 +1,43 @@
+<div class="container border mt-3">
+    <div>
+        <h1>Secciones</h1>
+    </div>
+
+    
+
+    <div class="my-2">
+        <button type="button" (click)="abrirModal()" class="btn btn-primary">Agregar seccion</button>
+    </div>
+
+    <div class="row border m-1 table-responsive">
+        <table class="table align-middle mb-0 bg-white text-center">
+            <thead class="bg-light">
+              <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Images</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let sec of sectionsList">
+                <td>
+                  <p>{{sec.name}}</p>
+                </td>
+                <td>
+                  <p class="fw-normal mb-1">{{sec.description}}</p>
+                </td>
+                <td>
+                    <p>{{sec.image_header}}</p>
+                </td>
+                
+                <td>
+                    <button type="button" class="btn btn-light btn-sm" >Editar</button>
+                    <button type="button" class="btn btn-danger btn-sm" >Eliminar</button>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
