@@ -1,0 +1,17 @@
+.dragging {
+    cursor: grab; /* Muestra una mano al mover */
+  }
+  
+  .dragging:active {
+    cursor: grabbing; /* Muestra una mano cerrada mientras arrastras */
+  }
+
+  .image_header{
+    height: 100px;
+    width: 150px;
+  }
+
+  ::ng-deep .custom-dialog .mat-dialog-container {
+    max-height: 80vh;  /* Limita la altura del modal */
+    overflow-y: auto;  /* Aparece un scroll si el contenido excede la altura */
+  }

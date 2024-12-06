@@ -35,9 +35,14 @@ export class MisSeccionesComponent implements OnInit {
       height: 'auto',
     })
 
-    dialogRef.componentInstance.event_emit.subscribe((res:any) => {
+    dialogRef.componentInstance.seccion_emit.subscribe((res:any) => {
+      console.log('res: ', res)
       this.getSecciones();
     })
+
+  }
+
+  verDetalle(seccion: ISectionEntity){
 
   }
 

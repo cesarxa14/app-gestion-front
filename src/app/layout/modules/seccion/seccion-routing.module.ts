@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SeccionComponent } from './seccion.component';
 import { MisSeccionesComponent } from './pages/mis-secciones/mis-secciones.component';
+import { SeccionDetalleComponent } from './pages/seccion-detalle/seccion-detalle.component';
 
 
 
@@ -14,7 +15,7 @@ const routes: Routes = [
     children: [
         { path: '', redirectTo: 'mis-secciones', pathMatch: 'full' },
         { path: 'mis-secciones'   , component: MisSeccionesComponent},
-        // { path: 'my-customers/details/:id', component: DetailCustomerComponent},
+        { path: 'mis-secciones/detalle/:id', component: SeccionDetalleComponent},
     ]
 
   }

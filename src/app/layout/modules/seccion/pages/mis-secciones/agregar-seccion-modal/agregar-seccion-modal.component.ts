@@ -13,7 +13,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class AgregarSeccionModalComponent implements OnInit {
 
   addSectionForm: FormGroup;
-  @Output() event_emit:any = new EventEmitter();
+  @Output() seccion_emit:any = new EventEmitter();
   constructor(
     private _formBuilder: FormBuilder,
     private seccionService: SeccionService,
@@ -39,6 +39,24 @@ export class AgregarSeccionModalComponent implements OnInit {
   get description() {return this.addSectionForm.controls["description"]}
   get image_header() {return this.addSectionForm.controls["image_header"]}
 
+  onFileSelected(event: Event){
+    let file
+    let base64File
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files[0]) {
+      file = input.files[0];
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        base64File = reader.result as string;
+        this.image_header.setValue(base64File)
+        console.log('Archivo en Base64:', base64File);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
   createSection(){
     const newSection: ICreateSectionDto = {
       name: this.name.value,
@@ -49,14 +67,15 @@ export class AgregarSeccionModalComponent implements OnInit {
     this.seccionService.createSection(newSection).subscribe((res: any)=> {
       console.log('res create: ', res);
       Swal.fire({
-        title: 'Se registro la seccion!',
+        title: 'Se creó la seccion!',
+        // text: 'Se inició sesión',
         icon: 'success',
         confirmButtonText: 'Ok',
         allowOutsideClick: false
       }).then((result) => {
         console.log('result: ', result)
         if(result.isConfirmed){
-          this.event_emit.emit(res);
+          this.seccion_emit.emit(res)
           this.dialogRef.close()
           
         }
