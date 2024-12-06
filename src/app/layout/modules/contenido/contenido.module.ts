@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ContenidoComponent } from './contenido.component';
+import { MisContenidosComponent } from './pages/mis-contenidos/mis-contenidos.component';
+import { ContenidoRoutingModule } from './contenido-routing.module';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ContenidoComponent,
+    MisContenidosComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    ContenidoRoutingModule
   ]
 })
 export class ContenidoModule { }

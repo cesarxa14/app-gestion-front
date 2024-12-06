@@ -6,6 +6,10 @@ const routes: Routes = [
     path: 'pages',
     loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule) 
   },
+  {
+    path: '**',
+    redirectTo: '/pages/secciones'
+  }
 ];
 
 @NgModule({
