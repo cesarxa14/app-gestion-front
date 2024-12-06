@@ -12,37 +12,13 @@
       </mat-toolbar>
       <hr style="color: white; margin: 0;">
       <mat-nav-list>
-        <a *ngIf="role == '1'" class="item-sidenav" mat-list-item routerLink="/pages/clases/programs">
+        <a  class="item-sidenav" mat-list-item routerLink="/pages/secciones/mis-secciones">
           <span class="material-icons button-backs">
             download
-          </span> Clases
+          </span> Secciones
         </a>
-        <a class="item-sidenav" mat-list-item routerLink="/pages/customers">
-          <span class="material-icons button-back">
-            upload
-          </span>
-          Clientes
-        </a>
-        <a class="item-sidenav" mat-list-item routerLink="/pages/assistance">
-          <span class="material-icons button-back">
-            upload
-          </span>
-          Asistencia
-        </a>
-
-        <a *ngIf="role == '3'" class="item-sidenav" mat-list-item routerLink="/pages/store">
-          <span class="material-icons button-back">
-            store
-          </span>
-          Tienda web
-        </a>
-
-        <a *ngIf="role == '1'" class="item-sidenav" mat-list-item routerLink="/pages/sales">
-          <span class="material-icons button-back">
-            local_offer
-          </span>
-          Ventas
-        </a>
+       
+        
         <!-- 
         <a class="item-sidenav" mat-list-item routerLink="/pages/products">
           <span class="material-icons button-back">

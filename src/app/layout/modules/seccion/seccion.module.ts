@@ -6,14 +6,19 @@ import { MisSeccionesComponent } from './pages/mis-secciones/mis-secciones.compo
 import { AgregarSeccionModalComponent } from './pages/mis-secciones/agregar-seccion-modal/agregar-seccion-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { SeccionDetalleComponent } from './pages/seccion-detalle/seccion-detalle.component';
+import { AgregarSubseccionModalComponent } from './pages/seccion-detalle/agregar-subseccion-modal/agregar-subseccion-modal.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
 @NgModule({
   declarations: [
     SeccionComponent,
     MisSeccionesComponent,
-    AgregarSeccionModalComponent
+    AgregarSeccionModalComponent,
+    SeccionDetalleComponent,
+    AgregarSubseccionModalComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     FormsModule, 
     ReactiveFormsModule,
+    DragDropModule,
+    AngularEditorModule
   ]
 })
 export class SeccionModule { }

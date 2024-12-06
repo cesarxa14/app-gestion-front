@@ -23,9 +23,27 @@ export class SeccionService {
     }
   }
 
+  getSeccionById(id: string){
+    try{
+      return this.http.get(`${this.API_BASE_URI}/${id}`)
+    }catch(err) {
+      console.log('error: ', err)
+      throw err
+    }
+  }
+
   createSection(payload: ICreateSectionDto){
     try{
       return this.http.post(`${this.API_BASE_URI}`, payload)
+    }catch(err) {
+      console.log('error: ', err)
+      throw err
+    }
+  }
+
+  updateOrderSubsections(id: number, payloadUpdateOrderSucsections: any){
+    try{
+      return this.http.put(`${this.API_BASE_URI}/${id}`, payloadUpdateOrderSucsections)
     }catch(err) {
       console.log('error: ', err)
       throw err

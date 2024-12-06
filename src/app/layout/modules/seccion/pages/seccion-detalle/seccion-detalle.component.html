@@ -1,0 +1,30 @@
+<div class="container border mt-3">
+    <div>
+        <h1>Secciones</h1>
+    </div>
+
+    
+
+    <div class="my-2">
+        <button type="button" (click)="abrirModal()" class="btn btn-primary">Agregar subseccion</button>
+    </div>
+
+    <div cdkDropList (cdkDropListDropped)="onDrop($event)" class="row my-3 p-2 dragging">
+        <div class="col-12 border" *ngFor="let sub of subSeccionesList" cdkDrag>
+            <div class="row">
+                <div class="col-md-2">
+                    {{sub.name}}
+                </div>
+                <div class="col-md-3" [innerHTML]="sub.description">
+                    
+                </div>
+                <div class="col-md-4">
+                    <img class="image_header" src="{{sub.image_header}}" alt="">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
