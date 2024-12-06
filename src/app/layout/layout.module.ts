@@ -5,6 +5,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
 import { SidenavComponent } from '../shared/pages/sidenav/sidenav.component';
 import { LayoutComponent } from './layout.component';
 import { LayoutRoutingModule } from './layout-routing.module';
@@ -19,6 +21,7 @@ import { LayoutRoutingModule } from './layout-routing.module';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
+    MatButtonModule,
     LayoutRoutingModule
   ]
 })

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICreateSectionDto } from '../../../interfaces/ICreateSectionDto';
 import { SeccionService } from '../../../services/seccion.service';
+import Swal from 'sweetalert2';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-agregar-seccion-modal',
@@ -11,9 +13,11 @@ import { SeccionService } from '../../../services/seccion.service';
 export class AgregarSeccionModalComponent implements OnInit {
 
   addSectionForm: FormGroup;
+  @Output() event_emit:any = new EventEmitter();
   constructor(
     private _formBuilder: FormBuilder,
-    private seccionService: SeccionService
+    private seccionService: SeccionService,
+    public dialogRef: MatDialogRef<AgregarSeccionModalComponent>,
   ) { }
 
   ngOnInit(): void {
@@ -44,6 +48,19 @@ export class AgregarSeccionModalComponent implements OnInit {
 
     this.seccionService.createSection(newSection).subscribe((res: any)=> {
       console.log('res create: ', res);
+      Swal.fire({
+        title: 'Se registro la seccion!',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        allowOutsideClick: false
+      }).then((result) => {
+        console.log('result: ', result)
+        if(result.isConfirmed){
+          this.event_emit.emit(res);
+          this.dialogRef.close()
+          
+        }
+      })
     })
   }
 

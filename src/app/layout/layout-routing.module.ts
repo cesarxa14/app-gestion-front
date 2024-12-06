@@ -9,6 +9,7 @@ const routes: Routes = [
       path: '',
       component: LayoutComponent,
       children: [
+        { path: '', redirectTo: 'secciones', pathMatch: 'full' },
         { path: 'secciones', loadChildren: () => import('./modules/seccion/seccion.module').then(m => m.SeccionModule) },
         { path: 'contenidos', loadChildren: () => import('./modules/contenido/contenido.module').then(m => m.ContenidoModule) },
       ]

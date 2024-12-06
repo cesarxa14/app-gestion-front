@@ -8,7 +8,7 @@ import { ICreateSectionDto } from '../interfaces/ICreateSectionDto';
 })
 export class SeccionService {
 
-  private API_BASE_URI: string = environment.API_URI + 'secciones'
+  private API_BASE_URI: string = environment.API_URI + 'sections'
   constructor(
     private http: HttpClient,
   ) { }
