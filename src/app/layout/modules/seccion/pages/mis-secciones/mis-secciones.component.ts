@@ -33,6 +33,7 @@ export class MisSeccionesComponent implements OnInit {
     const dialogRef = this.dialog.open(AgregarSeccionModalComponent, {
       width: '500px',
       height: 'auto',
+      panelClass: 'custom-dialog'
     })
 
     dialogRef.componentInstance.seccion_emit.subscribe((res:any) => {

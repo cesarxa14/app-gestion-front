@@ -5,6 +5,7 @@ import { ICreateSubSectionDto } from '../../../interfaces/ICreateSubsectionDto';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { angularEditorConfig } from 'src/app/shared/constants/editorConfig';
 
 @Component({
   selector: 'app-agregar-subseccion-modal',
@@ -13,54 +14,7 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 })
 export class AgregarSubseccionModalComponent implements OnInit {
 
-  editorConfig: AngularEditorConfig = {
-    editable: true,
-      spellcheck: true,
-      height: 'auto',
-      minHeight: '0',
-      maxHeight: 'auto',
-      width: 'auto',
-      minWidth: '0',
-      translate: 'yes',
-      enableToolbar: true,
-      showToolbar: true,
-      placeholder: 'Ingresa la descripcion.',
-      defaultParagraphSeparator: '',
-      defaultFontName: '',
-      defaultFontSize: '',
-      fonts: [
-        {class: 'arial', name: 'Arial'},
-        {class: 'times-new-roman', name: 'Times New Roman'},
-        {class: 'calibri', name: 'Calibri'},
-        {class: 'comic-sans-ms', name: 'Comic Sans MS'}
-      ],
-      customClasses: [
-      {
-        name: 'quote',
-        class: 'quote',
-      },
-      {
-        name: 'redText',
-        class: 'redText'
-      },
-      {
-        name: 'titleText',
-        class: 'titleText',
-        tag: 'h1',
-      },
-    ],
-    uploadUrl: 'v1/image',
-    // upload: (file: File) => { ... }
-    uploadWithCredentials: false,
-    sanitize: true,
-    toolbarPosition: 'top',
-    toolbarHiddenButtons: [
-      // Ocultar botones específicos (por ejemplo, enlaces y videos)
-      ['insertVideo'], 
-      ['strikeThrough', 'subscript', 'superscript']
-    ]
-   
-};
+  editorConfig: AngularEditorConfig = angularEditorConfig;
   addSubSectionForm: FormGroup;
   @Output() subseccion_emit:any = new EventEmitter();
   constructor(

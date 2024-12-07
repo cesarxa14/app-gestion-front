@@ -1,0 +1,50 @@
+<div class="container border mt-3">
+    <div>
+        <h1>Contenidos</h1>
+    </div>
+
+    <!-- CONTENIDO DATA -->
+     <div class="row p-2 card">
+        <div class="col my-1">
+            <h1>{{contenidoData.title}}</h1>
+        </div>
+
+        <div class="col my-1">
+            <div class="row">
+                <div class="col-auto" *ngFor="let key of keywords">
+                    <span class="badge rounded-pill bg-dark">{{key}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col my-1">
+            <div>
+                <p> <b>Descripción:</b>
+                {{contenidoData.description}}</p>
+            </div>
+        </div>
+
+        <div class="col my-1">
+            <div class="col" [innerHTML]="contenidoData.introduction"></div>
+        </div>
+
+        <div class="col my-1">
+            <img style="width: 250px; height: 130px;" [src]="contenidoData.image" alt="">
+        </div>
+
+        <div class="col my-1">
+            <p> <b>Tipo: {{contenidoData.type}}</b></p>
+        </div>
+
+        <div *ngIf="contenidoData.type === 'Enlace'" class="col my-1">
+            <a href="{{contenidoData.link}}" target="_blank">Enlace</a>
+        </div>
+
+        <div  class="col my-1">
+            <button type="button" (click)="agregarBloqueModal()" class="btn btn-primary">Agregar contenido</button>
+        </div>
+
+        <div>
+
+        </div>
+</div>  

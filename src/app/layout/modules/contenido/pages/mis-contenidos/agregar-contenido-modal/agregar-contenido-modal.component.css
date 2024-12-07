@@ -1,4 +1,16 @@
 ::ng-deep .custom-dialog .mat-dialog-container {
     max-height: 80vh;  /* Limita la altura del modal */
     overflow-y: auto;  /* Aparece un scroll si el contenido excede la altura */
-  }
+}
+
+.style-phoneContent {
+display: flex;
+flex-direction: column;
+gap: 24px;
+
+&_input {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+}

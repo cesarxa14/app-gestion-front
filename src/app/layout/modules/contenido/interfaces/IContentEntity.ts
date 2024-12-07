@@ -5,7 +5,8 @@ export interface IContentEntity {
   description: string
   introduction: string
   image: string;
-  seccion_id: number
+  seccion_id: number;
+  type: string;
   article: string
   link: string;
   document: string;

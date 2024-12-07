@@ -5,7 +5,7 @@ export interface ICreateContentDto {
   introduction: string
   image: string;
   seccion_id: number
-  article: string
+  type: string
   link: string;
   document: string;
 }
