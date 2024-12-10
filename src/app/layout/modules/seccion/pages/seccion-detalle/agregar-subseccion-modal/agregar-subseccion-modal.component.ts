@@ -63,17 +63,20 @@ export class AgregarSubseccionModalComponent implements OnInit {
   }
 
   createSubSection(){
+
+    Swal.showLoading();
     const payloadCreateSubseccion: ICreateSubSectionDto = {
       description: this.description.value,
       name: this.name.value,
       image_header: this.image_header.value,
-      seccion_id: Number(this.idSeccion)
+      seccion_id: this.idSeccion
     }
 
     console.log(payloadCreateSubseccion)
     
     this.subSeccionService.createSubSection(payloadCreateSubseccion).subscribe((res: any) => {
       console.log('res created: ', res);
+      Swal.close();
       Swal.fire({
         title: 'Se creó la subseccion!',
         // text: 'Se inició sesión',
@@ -85,6 +88,7 @@ export class AgregarSubseccionModalComponent implements OnInit {
         if(result.isConfirmed){
           this.subseccion_emit.emit(res)
           this.dialogRef.close()
+
           
         }
       })

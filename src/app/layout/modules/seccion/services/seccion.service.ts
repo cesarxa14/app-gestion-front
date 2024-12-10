@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ICreateSectionDto } from '../interfaces/ICreateSectionDto';
+import { IEditSectionDto } from '../interfaces/IEditSectionDto';
 
 @Injectable({
   providedIn: 'root'
@@ -41,9 +42,28 @@ export class SeccionService {
     }
   }
 
+  updateSection(payload: IEditSectionDto){
+    try{
+      return this.http.put(`${this.API_BASE_URI}/${payload.id_section}`, payload)
+    }catch(err) {
+      console.log('error: ', err)
+      throw err
+    }
+  }
+
+  deleteSection(idSection: number){
+    try{
+      return this.http.delete(`${this.API_BASE_URI}/${idSection}`)
+    }catch(err) {
+      console.log('error: ', err)
+      throw err
+    }
+  }
+
+
   updateOrderSubsections(id: number, payloadUpdateOrderSucsections: any){
     try{
-      return this.http.put(`${this.API_BASE_URI}/${id}`, payloadUpdateOrderSucsections)
+      return this.http.put(`${this.API_BASE_URI}/updateSubsections/${id}`, payloadUpdateOrderSucsections)
     }catch(err) {
       console.log('error: ', err)
       throw err

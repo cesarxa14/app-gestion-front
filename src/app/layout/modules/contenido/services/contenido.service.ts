@@ -40,5 +40,14 @@ export class ContenidoService {
     }
   }
 
+  deleteContent(idContent: number){
+    try{
+      return this.http.delete(`${this.API_BASE_URI}/${idContent}`)
+    }catch(err) {
+      console.log('error: ', err)
+      throw err
+    }
+  }
+
 
 }

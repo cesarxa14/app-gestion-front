@@ -41,7 +41,15 @@
         </div>
 
         <div  class="col my-1">
-            <button type="button" (click)="agregarBloqueModal()" class="btn btn-primary">Agregar contenido</button>
+            <button type="button" (click)="agregarBloqueModal()" class="btn btn-dark">Agregar bloque</button>
+        </div>
+
+        <div class="col my-1">
+            <h2>Bloques</h2>
+        </div>
+
+        <div class="row my-2 mx-2">
+            <div class="card col-md-10 my-1 p-1" [innerHTML]="block.content" *ngFor="let block of blocksList"></div>
         </div>
 
         <div>

@@ -6,6 +6,7 @@ import { angularEditorConfig } from 'src/app/shared/constants/editorConfig';
 import { BloqueService } from '../../../services/bloque.service';
 import { ICreateBlockDto } from '../../../interfaces/ICreateBlockDto';
 import Swal from 'sweetalert2';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-agregar-bloque-modal',
@@ -26,6 +27,35 @@ export class AgregarBloqueModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.addBlockForm = this._builderForm();
+
+    // this.editorConfig.upload = (file: File): Observable<any> => {
+    //   let base64File
+    //   console.log('file: ', file)
+    //   const reader = new FileReader();
+    //   reader.onload = () => {
+    //     base64File = reader.result as string;
+    //     // this.image_header.setValue(base64File)
+    //     console.log('Archivo en Base64:', base64File);
+    //   };
+    //   reader.readAsDataURL(file);
+    //   return this.bloqueService.uploadImage(base64File);
+    // }
+  }
+
+  handleImageUpload(file: File): Observable<string> {
+    return new Observable((observer) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        // this.previewUrl = reader.result; // Guardar la URL base64 para previsualización
+        // this.selectedFile = file; // Guardar el archivo seleccionado
+        observer.next(reader.result as string); // Emitir la URL base64
+        observer.complete(); // Completar el Observable
+      };
+      reader.onerror = (error) => {
+        observer.error(error); // Emitir error si ocurre
+      };
+      reader.readAsDataURL(file); // Convertir la imagen a base64
+    });
   }
 
   _builderForm() {
@@ -50,7 +80,7 @@ export class AgregarBloqueModalComponent implements OnInit {
       contenido_id: this.idContenido // FALTA;
     }
 
-    this.bloqueService.createContent(payloadCreate).subscribe((res: any) => {
+    this.bloqueService.createBlock(payloadCreate).subscribe((res: any) => {
       console.log('res created: ', res);
 
       Swal.fire({

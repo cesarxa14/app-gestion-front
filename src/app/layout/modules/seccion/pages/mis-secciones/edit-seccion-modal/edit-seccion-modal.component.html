@@ -1,0 +1,43 @@
+<div class="container" >
+    <div class="row">
+        <h3>Editar Seccion</h3>
+    </div>
+
+    <div class="my-1 row justify-content-center ">
+        <div class="card">
+            <div class="card-body">
+                <form [formGroup]="editSectionForm" (ngSubmit)="editSection()">
+
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                        <input type="email" formControlName="name" class="form-control"
+                                [ngClass]="name.errors && (name.dirty || name.touched) ? 'is-invalid': ''">
+                        <div *ngIf="name.hasError('required')" class="invalid-feedback">
+                            Este campo es requerido 
+                        </div>
+                    
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Description</label>
+                        <input type="email" formControlName="description" class="form-control"
+                                [ngClass]="description.errors && (description.dirty || description.touched) ? 'is-invalid': ''">
+                        <div *ngIf="description.hasError('required')" class="invalid-feedback">
+                            Este campo es requerido 
+                        </div>
+                    
+                    </div>
+                    
+
+                      <div class="row justify-content-center text-center">
+                        <div class="col">
+                            <button type="submit" [disabled]="editSectionForm.invalid" class="btn btn-dark w-100">Guardar</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+  

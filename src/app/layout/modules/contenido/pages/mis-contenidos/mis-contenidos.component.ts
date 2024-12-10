@@ -3,6 +3,7 @@ import { ContenidoService } from '../../services/contenido.service';
 import { IContentEntity } from '../../interfaces/IContentEntity';
 import { MatDialog } from '@angular/material/dialog';
 import { AgregarContenidoModalComponent } from './agregar-contenido-modal/agregar-contenido-modal.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mis-contenidos',
@@ -23,8 +24,10 @@ export class MisContenidosComponent implements OnInit {
   }
 
   getMyContents(){
+    Swal.showLoading();
     this.contenidoService.getContents().subscribe((res: any) => {
       console.log('res: ', res)
+      Swal.close();
       this.contentList = res;
     })
   }
@@ -39,6 +42,21 @@ export class MisContenidosComponent implements OnInit {
     dialogRef.componentInstance.content_emit.subscribe((res:any) => {
       console.log('res: ', res)
       this.getMyContents();
+    })
+  }
+
+  deleteContent(content: IContentEntity){
+    Swal.fire({
+      title: '¿Estás seguro que deseas eliminar el contenido?',
+      showCancelButton: true,
+      confirmButtonText: 'Eliminar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.contenidoService.deleteContent(content.id).subscribe((res) => {    
+          console.log('eliminado: ', res)
+          this.getMyContents();
+        })
+      } 
     })
   }
 

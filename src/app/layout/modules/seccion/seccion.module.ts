@@ -10,6 +10,7 @@ import { SeccionDetalleComponent } from './pages/seccion-detalle/seccion-detalle
 import { AgregarSubseccionModalComponent } from './pages/seccion-detalle/agregar-subseccion-modal/agregar-subseccion-modal.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { EditSeccionModalComponent } from './pages/mis-secciones/edit-seccion-modal/edit-seccion-modal.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     MisSeccionesComponent,
     AgregarSeccionModalComponent,
     SeccionDetalleComponent,
-    AgregarSubseccionModalComponent
+    AgregarSubseccionModalComponent,
+    EditSeccionModalComponent
   ],
   imports: [
     CommonModule,

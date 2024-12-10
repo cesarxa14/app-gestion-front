@@ -23,13 +23,31 @@ export class BloqueService {
     }
   }
 
+  getBlocksByContent(idContent: number){
+    try{
+      return this.http.get(`${this.API_BASE_URI}/${idContent}`)
+    }catch(err) {
+      console.log('error: ', err)
+      throw err
+    }
+  }
 
-  createContent(payload: ICreateBlockDto){
+
+  createBlock(payload: ICreateBlockDto){
     try{
       return this.http.post(`${this.API_BASE_URI}`, payload)
     }catch(err) {
       console.log('error: ', err)
       throw err
+    }
+  }
+
+  uploadImage(image:any){
+    try {
+      return this.http.post(`${this.API_BASE_URI}/uploadImageEditor`, image)
+    } catch(err) {
+      console.log('err: ', err)
+      throw err;
     }
   }
 }

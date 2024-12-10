@@ -36,8 +36,8 @@ export const angularEditorConfig: AngularEditorConfig =  {
         tag: 'h1',
       },
     ],
-    uploadUrl: 'v1/image',
-    // upload: (file: File) => { ... }
+    // uploadUrl: 'v1/image',
+    // upload: (file: File) => { console.log(file) },
     uploadWithCredentials: false,
     sanitize: true,
     toolbarPosition: 'top',

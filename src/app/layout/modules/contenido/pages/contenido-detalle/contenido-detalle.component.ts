@@ -4,6 +4,8 @@ import { ContenidoService } from '../../services/contenido.service';
 import { IContentEntity } from '../../interfaces/IContentEntity';
 import { AgregarBloqueModalComponent } from './agregar-bloque-modal/agregar-bloque-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { BloqueService } from '../../services/bloque.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contenido-detalle',
@@ -12,29 +14,51 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ContenidoDetalleComponent implements OnInit {
 
-  contenidoData: IContentEntity;
+  contenidoData: IContentEntity = {title: '', description: '', article: '', document: '', image: '', introduction: '',
+    keywords: '', link: '', seccion_id: 0, type: '', createdAt: '', id: 0, updateAt: '' 
+  };
   idContenido: string;
   keywords: any[] = [];
+  blocksList: any[] = [];
   constructor(
     private route: ActivatedRoute,
     private contenidoService: ContenidoService,
     public dialog: MatDialog,
+    private bloqueService: BloqueService,
+
 
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.idContenido = this.route.snapshot.paramMap.get('id')!; 
-    this.getContenido();
+    await this.getContenido();
   }
 
-  getContenido(){
-      this.contenidoService.getContentById(this.idContenido).subscribe((res: any)=> {
+  async getContenido(){
+    Swal.showLoading();
+    return new Promise<void>((resolve, reject)=> {
+      this.contenidoService.getContentById(this.idContenido).subscribe(async (res: any)=> {
         console.log('get: ', res)
         this.contenidoData = res;
         this.keywords = JSON.parse(this.contenidoData.keywords);
+        await this.getBloquesByContenido();
+        Swal.close();
+        resolve();
         // this.orderArrayData = JSON.parse(this.seccionData.subsections_order)
       })
+    })
+      
     
+  }
+
+  async getBloquesByContenido(){
+    return new Promise<void>((resolve, reject)=> {
+      this.bloqueService.getBlocksByContent(Number(this.idContenido)).subscribe((res:any) => {
+        console.log('contenido: ', res)
+        this.blocksList = res;
+        resolve();
+      })
+    })
   }
 
   agregarBloqueModal(){
@@ -47,7 +71,7 @@ export class ContenidoDetalleComponent implements OnInit {
 
     dialogRef.componentInstance.block_emit.subscribe((res:any) => {
       console.log('res: ', res)
-      this.getContenido();
+      this.getBloquesByContenido();
     })
   }
 

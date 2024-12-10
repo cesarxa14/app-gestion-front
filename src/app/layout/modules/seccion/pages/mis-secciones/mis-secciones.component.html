@@ -28,16 +28,16 @@
                   <p class="fw-normal mb-1">{{sec.description}}</p>
                 </td>
                 <td>
-                    <p>falta poner las imagenes</p>
+                  <img style="width: 150px; height: 100px;" src="{{sec.image_header}}" alt="">
                 </td>
                 
                 <td>
-                  <button (click)="verDetalle(sec)" type="button" class="btn btn-ligth btn-sm mx-1">
+                  <button type="button" class="btn btn-ligth btn-sm mx-1">
                     <a [routerLink]="['/pages/secciones/mis-secciones/detalle', sec.id]"><i class="fa-solid fa-eye"></i></a>
                     
                   </button>
-                    <button type="button" class="btn btn-light btn-sm" >Editar</button>
-                    <button type="button" class="btn btn-danger btn-sm" >Eliminar</button>
+                    <button type="button" (click)="editSeccion(sec)" class="btn btn-light btn-sm" >Editar</button>
+                    <button type="button" (click)="deleteSeccion(sec)" class="btn btn-danger btn-sm" >Eliminar</button>
 
                 </td>
               </tr>
